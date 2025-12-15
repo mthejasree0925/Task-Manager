@@ -16,7 +16,7 @@ const Tab = createBottomTabNavigator<TabParamList>();
 
 const TabNavigator = () => {
   const { user } = useAuth();
-
+console.log("user----------", user);
   if (!user) {
     return (
       <Tab.Navigator>

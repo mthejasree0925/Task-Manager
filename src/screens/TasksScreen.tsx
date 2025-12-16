@@ -195,21 +195,6 @@ export const TasksScreen: React.FC = () => {
       <View style={{ flex: 1, flexDirection: isWideScreen ? 'row' : 'column' }}>
 
         <View style={isWideScreen ? { flex: 0.5 } : {}}>
-          {isFeatureEnabled('enableTaskSearch') && 
-          <ThemedCard style={styles.searchCard}>
-            <TextInput
-              style={[
-                styles.searchInput,
-                {
-                  color: theme.colors.text.primary,
-                }
-              ]}
-              placeholder={t('tasks.searchPlaceholder')}
-              placeholderTextColor={theme.colors.text.tertiary}
-              value={searchQuery}
-              onChangeText={handleSearch}
-            />
-          </ThemedCard>}
 
           {showAddForm ? (
             <TaskForm

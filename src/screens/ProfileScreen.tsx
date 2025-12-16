@@ -23,8 +23,8 @@ export const ProfileScreen: React.FC = () => {
   const { user, logout } = useAuth();
   const navigation = useNavigation<ProfileScreenNavigationProp>();
   const { t, locale, changeLanguage } = useTranslation();
-  const { theme, isDark, toggleTheme, themeMode } = useTheme();
-  const { flags, isFeatureEnabled } = useFeatureFlags();
+  const { theme } = useTheme();
+  const {  isFeatureEnabled } = useFeatureFlags();
 
   const handleLogout = () => {
     showAlert(
@@ -50,7 +50,6 @@ export const ProfileScreen: React.FC = () => {
   };
 
   const handleChangeLanguage = async (newLocale: string) => {
-    console.log("newLocale-------------",newLocale);
     try {
       await changeLanguage(newLocale);
     } catch (error) {
@@ -138,48 +137,7 @@ export const ProfileScreen: React.FC = () => {
             </View>
           </View>
         </ThemedCard>}
-
-      
-
-        {user?.role === 'ROLE_ADMIN' && (
-          <ThemedCard style={styles.sectionCard}>
-            <ThemedText size="lg" weight="semibold" style={styles.sectionTitle}>
-              {t('profile.adminFeatures')}
-            </ThemedText>
-
-            <View style={styles.featureList}>
-              <View style={[styles.featureItem, { backgroundColor: theme.colors.background.secondary }]}>
-                <ThemedText size="sm" weight="semibold" style={styles.featureName}>
-                  {t('profile.errorLogs')}
-                </ThemedText>
-                <ThemedText variant="secondary" size="sm" style={styles.featureDescription}>
-                  {t('profile.errorLogsDescription')}
-                </ThemedText>
-              </View>
-
-              <View style={[styles.featureItem, { backgroundColor: theme.colors.background.secondary }]}>
-                <ThemedText size="sm" weight="semibold" style={styles.featureName}>
-                  {t('profile.userManagement')}
-                </ThemedText>
-                <ThemedText variant="secondary" size="sm" style={styles.featureDescription}>
-                  {t('profile.userManagementDescription')}
-                </ThemedText>
-              </View>
-            </View>
-
-            <Button
-              title={t('profile.viewErrorLogs')}
-              onPress={() => navigation.navigate('Errors')}
-              variant="secondary"
-              style={styles.adminButton}
-            />
-          </ThemedCard>
-        )}
-
-   
-
-       
-
+  
         <Button
           title={t('auth.signOut')}
           onPress={handleLogout}
@@ -187,11 +145,6 @@ export const ProfileScreen: React.FC = () => {
           style={styles.logoutButton}
         />
 
-        <View style={styles.footer}>
-          <ThemedText variant="tertiary" size="sm">
-            {t('profile.copyright')}
-          </ThemedText>
-        </View>
       </ScrollView>
     </ThemedView>
   );
@@ -252,7 +205,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   languageButtons: {
-    flexDirection: 'row',
     gap: 12,
   },
   languageButton: {

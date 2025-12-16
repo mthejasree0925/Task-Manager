@@ -33,7 +33,6 @@ export const SignInScreen: React.FC = () => {
       showAlert(t('common.error'), t('auth.fillAllFields'));
       return;
     }
-
     setLoading(true);
     try {
       await login(email, password);
@@ -105,7 +104,6 @@ export const SignInScreen: React.FC = () => {
                 <ThemedText variant="secondary" style={styles.demoTitle}>
                   {t('auth.demoCredentials')}
                 </ThemedText>
-
                 <Button
                   title={t('auth.useAdminAccount')}
                   onPress={() => fillDemoCredentials('admin')}
@@ -113,7 +111,6 @@ export const SignInScreen: React.FC = () => {
                   style={styles.demoButton}
                   disabled={loading}
                 />
-
                 <Button
                   title={t('auth.useMemberAccount')}
                   onPress={() => fillDemoCredentials('user')}
